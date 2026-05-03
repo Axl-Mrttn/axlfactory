@@ -129,7 +129,7 @@ const Index = () => {
             <p>
               Luiz Gonzaga Morettin foi matemático e estatístico. Formou-se na
               USP, deu aula por mais de cinquenta anos em faculdades como PUC e
-              FEI, e escreveu livros que ainda hoje ensinam gente que ele nunca
+              FEI e escreveu livros que ainda hoje ensinam gente que ele nunca
               conheceu.
             </p>
             <p>
