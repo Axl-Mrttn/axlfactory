@@ -50,7 +50,7 @@ function NormalWave() {
     <svg
       viewBox="0 0 1000 500"
       preserveAspectRatio="xMidYMid meet"
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="w-full h-full pointer-events-none"
       aria-hidden="true"
     >
       {offsets.map((offset, i) => (
@@ -73,55 +73,58 @@ const Index = () => {
   const [showInfo, setShowInfo] = useState(false);
 
   return (
-    <div className="bg-organic min-h-screen w-full relative overflow-hidden flex items-center justify-center px-6 py-10">
-      {/* Onda — fica atrás dos links, ocupa o stage central */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-full max-w-[1200px] aspect-[2/1]">
-          <NormalWave />
-        </div>
+    <div className="bg-organic min-h-screen w-full relative overflow-hidden flex flex-col items-center justify-center px-6 py-10 gap-6 sm:gap-10">
+      {/* Onda — flui no topo, com tamanho controlado */}
+      <div className="relative w-full max-w-[900px] aspect-[2/1] shrink-0">
+        <NormalWave />
       </div>
 
-      {/* Conteúdo: links empilhados sobre a onda, alinhados ao centro */}
-      <div className="relative z-10 w-full max-w-[1200px] flex flex-col items-center fade-up">
-        <nav className="flex flex-col gap-3 sm:gap-4 text-[10px] sm:text-xs uppercase tracking-[0.18em] text-foreground">
-          <a
-            href="https://bisque.lovable.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-60 transition-opacity"
-          >
-            BISQUE
-          </a>
-          <a
-            href="https://kadenza.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-60 transition-opacity"
-          >
-            KADENZA
-          </a>
-          <span className="opacity-50 cursor-default select-none">
-            SKYER (SOON)
-          </span>
-          <button
-            onClick={() => setShowInfo(true)}
-            className="hover:opacity-60 transition-opacity text-left"
-          >
-            INFO
-          </button>
-        </nav>
-      </div>
+      {/* Menu logo abaixo da curva, compacto, centralizado */}
+      <nav className="relative z-10 flex flex-col items-center gap-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-foreground fade-up">
+        <a
+          href="https://bisque.lovable.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-60 transition-opacity"
+        >
+          BISQUE
+        </a>
+        <a
+          href="https://kadenza.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-60 transition-opacity"
+        >
+          KADENZA
+        </a>
+        <span className="opacity-50 cursor-default select-none">
+          SKYER (SOON)
+        </span>
+        <button
+          onClick={() => setShowInfo(true)}
+          className="hover:opacity-60 transition-opacity"
+        >
+          INFO
+        </button>
+      </nav>
 
-      {/* Modal info — fundo orgânico mantido, texto centrado */}
+      {/* Modal info — fundo orgânico mantido, texto menor e light */}
       {showInfo && (
         <div
-          className="bg-organic fixed inset-0 z-50 flex items-center justify-center p-6 sm:p-10 cursor-pointer overflow-y-auto"
-          onClick={() => setShowInfo(false)}
+          className="bg-organic fixed inset-0 z-50 flex items-center justify-center p-6 sm:p-10 overflow-y-auto"
         >
-          <article className="relative z-10 max-w-xl w-full text-foreground text-base sm:text-lg leading-relaxed space-y-5 tracking-tight">
+          {/* Botão BACK no canto */}
+          <button
+            onClick={() => setShowInfo(false)}
+            className="absolute top-6 left-6 sm:top-10 sm:left-10 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-foreground hover:opacity-60 transition-opacity z-10"
+          >
+            ← BACK
+          </button>
+
+          <article className="relative z-10 max-w-lg w-full text-foreground text-[11px] sm:text-xs leading-[1.7] font-light space-y-4">
             <p>
               Esse site toma emprestado como inspiração a capa do primeiro livro
-              do meu pai, <em>Estatística Básica</em>, publicado em 1979.
+              do meu pai, <em className="italic">Estatística Básica</em>, publicado em 1979.
             </p>
             <p>
               Luiz Gonzaga Morettin foi matemático e estatístico. Formou-se na
